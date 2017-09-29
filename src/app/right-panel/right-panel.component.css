@@ -1,0 +1,23 @@
+body, p, td {
+    font-family: "Visitor";
+    background-color:#6B6B6B;
+    color: #ffffff;
+}
+.next {
+    height: 96px;
+}
+.next table {
+    text-align: center;
+    margin: 0 auto;
+    border: 5px solid #363636;
+}
+#NextTetrimino {
+    font-size: 30px;
+    padding: 0 0 0 0;
+}
+.header {
+    font-size: 30px;
+}
+a {
+    cursor: pointer; cursor: hand;
+}

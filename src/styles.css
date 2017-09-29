@@ -1,1 +1,24 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face{
+    font-family: "Pixel-Noir-Caps";
+    src: url('./assets/fonts/header/Pixel-Noir-Caps.otf'),
+    url('./assets/fonts/header/Pixel-Noir-Caps.eot'); /* IE */
+}
+@font-face{
+    font-family: "Pixel-Noir";
+    src: url('./assets/fonts/body/Pixel-Noir.otf'),
+    url('./assets/fonts/body/Pixel-Noir.eot'); /* IE */
+}
+@font-face{
+    font-family: "Visitor";
+    src: url('./assets/fonts/body/Visitor.otf'),
+    url('./assets/fonts/body/Visitor.eot'); /* IE */
+}
+body {
+    background-color: #000021;
+    color: #ECECEC;
+    background-image: url('./assets/wallpapers/nyc.gif');
+    background-repeat: no-repeat;
+    background-repeat: repeat-x;
+    background-attachment: fixed;
+    background-position: bottom; 
+}

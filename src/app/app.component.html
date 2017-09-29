@@ -1,20 +1,37 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{title}}!
-  </h1>
-  <img width="300" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
-
+<table class="box-three">
+    <tr align="center" class="titleCell">
+        <td colspan="3" id="trapezoid">
+            <h1>IvoTetris</h1>
+        </td>
+    </tr>
+    <tr>
+        <td class="side-generic-left">
+            <app-left-panel [DataFromAppComponent]="sampleDataToLeft">Loading Left Panel...</app-left-panel>
+        </td>
+        <td class="side-generic-middle">
+            <app-grid [DataFromAppComponent]="sampleDataToGrid" (DataFromGrid)='handleDataFromGrid($event)'>Loading Tetris Grid...</app-grid>
+        </td>
+        <td class="side-generic-right">
+            <app-right-panel [DataFromAppComponent]="sampleDataToRight">Loading Left Right...</app-right-panel>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="3" height="35" align="center">
+            <div class='share-buttons' id="share-button">
+                Share the game
+                <a href="https://plus.google.com/share?url=https://tetris.ivaylopavlov.com" target="_blank">
+                    <img src="../assets/social_media/google.png" alt="Google" />
+                </a>
+                <a href="http://www.facebook.com/sharer.php?u=https://tetris.ivaylopavlov.com" target="_blank">
+                    <img src="../assets/social_media/facebook.png" alt="Facebook" />
+                </a>
+                <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=https://tetris.ivaylopavlov.com" target="_blank">
+                    <img src="../assets/social_media/linkedin.png" alt="LinkedIn" />
+                </a>
+                <a href="https://twitter.com/share?url=https://tetris.ivaylopavlov.com&amp;text=I%20played%20IvoTetris%20at&amp;hashtags=ivotetris" target="_blank">
+                    <img src="../assets/social_media/twitter.png" alt="Twitter" />
+                </a>
+            </div>
+        </td>
+    </tr>
+</table>

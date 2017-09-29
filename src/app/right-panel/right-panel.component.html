@@ -1,0 +1,25 @@
+<br>
+<p align="center" id="NextTetrimino">
+    Next
+</p>
+<div class="next" *ngIf="dataReceived.nextTetrimino !== undefined">
+  <table [innerHTML]="dataReceived.nextTetrimino.printHTMLLayout()"></table>
+</div>
+<br><br><br>
+<a>
+  <div class="button" align="center">
+    <app-scoring-popup></app-scoring-popup>
+  </div>
+</a>
+<br><br>
+<a>
+  <div class="button" align="center">
+    <app-controls-popup></app-controls-popup>
+  </div>
+</a>
+<br><br>
+<a>
+  <div class="button" align="center">
+    <app-settings-popup></app-settings-popup>
+  </div>
+</a>

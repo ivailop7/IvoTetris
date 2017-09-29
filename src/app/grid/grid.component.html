@@ -1,0 +1,6 @@
+<table>
+  <tr *ngFor="let i of rowNumbers">
+      <td *ngFor="let j of colNumbers" width="20"><img src="../../assets/minos/{{ getMatrixCell(i,j) }}.png" width="36px" height="36px"/> </td>
+  </tr>
+</table>
+<app-game-over-popup *ngIf="this.d_gameOver" [Score]="this.d_score" (newGameSignal)='handleDataFromGameOverPopup($event)'></app-game-over-popup>

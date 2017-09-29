@@ -1,0 +1,66 @@
+h1 {
+    font-family: "Pixel-Noir-Caps";
+    font-size: 48px;
+}
+.titleCell {
+    background-color: #000021;
+    color: #ECECEC;
+}
+.box-three {
+    width:900px;
+    height:600px;
+    position:fixed;
+    margin-left:-450px; /* half of width */
+    margin-top:-400px;  /* half of height */
+    top:49%;
+    left:50%;
+}
+.box-three td {
+    padding:0;
+}
+#trapezoid {
+    width: 150px;
+    height: 110px;
+    /* background: #2C2C2C; */
+    background: #C04000;
+    transform: perspective(20px) rotateX(1.5deg);
+    margin: 50px;
+    overflow: hidden;
+}
+.side-generic-left {
+    font-family: "Visitor";
+    background-color:#6B6B6B;
+    color: #ffffff;
+    width: 240px;
+    padding: 0px 0px 0px 0px;
+    vertical-align: top;
+}
+.side-generic-middle {
+    font-family: "Visitor";
+    background-color:#000021;
+    color: #ffffff;
+    width: 320px;
+}
+.side-generic-right {
+    font-family: "Visitor";
+    background-color:#6B6B6B;
+    color: #ffffff;
+    width: 240px;
+    vertical-align: top;
+}
+.share-buttons {
+    margin: 0 auto;
+    font-family: "Pixel-Noir";
+    font-size: 12px;
+    width: 900px;
+    height: 35px;
+    background: #2C2C2C;
+    transform: perspective(10px) rotateX(-0.5deg);
+}
+#share-button img {
+    width: 35px;
+    padding: 5px;
+    border: 0;
+    box-shadow: 0;
+    display: inline;
+}

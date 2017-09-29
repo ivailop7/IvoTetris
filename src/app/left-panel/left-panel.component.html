@@ -1,0 +1,33 @@
+<br>
+<p align="center" id="HoldTetrimino">
+  Hold
+</p>
+<div class="hold" *ngIf="dataReceived">
+    <table *ngIf="!dataReceived.holdTetrimino">
+        <tr><td><img src="../../assets/minos/0.png" width="24px" height="24px"/></td><td><img src="../../assets/minos/0.png" width="24px" height="24px"/></td><td><img src="../../assets/minos/0.png" width="24px" height="24px"/></td><td><img src="../../assets/minos/0.png" width="24px" height="24px"/></td></tr>
+        <tr><td><img src="../../assets/minos/0.png" width="24px" height="24px"/></td><td><img src="../../assets/minos/0.png" width="24px" height="24px"/></td><td><img src="../../assets/minos/0.png" width="24px" height="24px"/></td><td><img src="../../assets/minos/0.png" width="24px" height="24px"/></td></tr>
+        <tr><td><img src="../../assets/minos/0.png" width="24px" height="24px"/></td><td><img src="../../assets/minos/0.png" width="24px" height="24px"/></td><td><img src="../../assets/minos/0.png" width="24px" height="24px"/></td><td><img src="../../assets/minos/0.png" width="24px" height="24px"/></td></tr>
+        <tr><td><img src="../../assets/minos/0.png" width="24px" height="24px"/></td><td><img src="../../assets/minos/0.png" width="24px" height="24px"/></td><td><img src="../../assets/minos/0.png" width="24px" height="24px"/></td><td><img src="../../assets/minos/0.png" width="24px" height="24px"/></td></tr>
+    </table>
+    <table *ngIf="dataReceived.holdTetrimino"
+           [innerHTML]="dataReceived.holdTetrimino.printHTMLLayout()">
+    </table>
+</div>
+<br><br>
+<div id="level" align="center">
+  <p class="level-header">Level</p>
+  <p class="level-content" *ngIf="dataReceived">{{ dataReceived.dropSpeed + 1 }}</p>
+</div>
+<div id="score" align="center">
+  <p class="score-header">Score</p>
+  <p class="score-content" *ngIf="dataReceived">{{ dataReceived.score }}</p>
+</div>
+<div id="linesleft" align="center">
+  <p class="linesleft-header">Lines Left</p>
+  <p class="linesleft-content" *ngIf="dataReceived">{{ dataReceived.linesleft }}</p>
+</div>
+<!-- <input type="text" class="form-control" 
+       value="{{ childSampleData }}" 
+       [(ngModel)]='childSampleData' 
+       (ngModelChange)="sendData($event)" 
+       placeholder="write some thing to send parent component"> -->

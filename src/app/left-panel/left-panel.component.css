@@ -1,0 +1,38 @@
+body, p, td {
+    font-family: "Visitor";
+    background-color:#6B6B6B;
+    color: #ffffff;
+}
+.hold {
+    height: 96px;
+}
+.hold table {
+    text-align: center;
+    margin: 0 auto;
+    border: 5px solid #363636;
+}
+#HoldTetrimino {
+    font-size: 30px;
+    padding: 0 0 0 0;
+}
+.level-header {
+    font-size: 30px;
+}
+.level-content {
+    font-size: 70px;
+    color: aqua;
+}
+.score-header {
+    font-size: 30px;
+}
+.score-content {
+    font-size: 70px;
+    color: yellow;
+}
+.linesleft-header {
+    font-size: 30px;
+}
+.linesleft-content {
+    font-size: 70px;
+    color: greenyellow;
+}
