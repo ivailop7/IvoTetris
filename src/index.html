@@ -3,22 +3,26 @@
 <head>
   <meta charset="utf-8">
   <title>IvoTetris - Ivo's Blog</title>
-  <!-- Load common libraries -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/typescript/2.1.1/typescript.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.min.js"></script>
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/zone.js/0.8.5/zone.min.js"></script> -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.19.38/system.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
-
-  <!-- Configure SystemJS -->
-  <script src="systemjs.config.js"></script>
   
+  <!-- Global Site Tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-98275511-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments)};
+    gtag('js', new Date());
+
+    gtag('config', 'UA-98275511-2');
+  </script>
+
+  <!-- Load the Angular Material stylesheet -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+  <link href="https://unpkg.com/@angular/material/prebuilt-themes/pink-bluegrey.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <!-- Load the Angular Material stylesheet -->
-  <link href="https://unpkg.com/@angular/material/prebuilt-themes/pink-bluegrey.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
 </head>
 <body>
     <a href="https://github.com/ivailop7/IvoTetris">
@@ -30,7 +34,7 @@
     <a href="http://www.ivaylopavlov.com/">
       <img style="position: absolute; top: 0; left: 0; border: 0;" 
             src="../assets/go_to_blog.png" 
-            alt="Fork me on GitHub" 
+            alt="Go To Blog" 
             data-canonical-src="../assets/go_to_blog.png">
     </a>
   <app-root></app-root>

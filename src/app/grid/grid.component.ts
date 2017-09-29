@@ -15,7 +15,6 @@ import { GameOverPopupComponent } from '../game-over-popup/game-over-popup.compo
 export class GridComponent implements OnInit {
   @Input('DataFromAppComponent') dataReceived: any;
   @Output('DataFromGrid') outgoingData = new EventEmitter<any>();
-  @HostListener('document:keypress', ['$event'])
 
   private d_height: number;
   private d_width: number;
@@ -115,7 +114,6 @@ export class GridComponent implements OnInit {
   }
 
   public togglePlayPaused(): void {
-    console.log('P - Pause');
     this.d_isPaused = !this.d_isPaused;
   }
 
@@ -268,7 +266,6 @@ export class GridComponent implements OnInit {
   }
 
   public leftMove(): void {
-    console.log('Left - Move left');
     const shape2: number[] = this.d_currentTetrimino.getLeftestOnesPerRows();
 
     for (let k = 0; k < shape2.length; k++) {
@@ -289,7 +286,6 @@ export class GridComponent implements OnInit {
   }
 
   public rightMove(): void {
-    console.log('Right - Move right');
     const shape1: number[] = this.d_currentTetrimino.getRightestOnesPerRows();
 
     for (let k = 0; k < shape1.length; k++) {
@@ -310,7 +306,6 @@ export class GridComponent implements OnInit {
   }
 
   public downMove(): void {
-    console.log('Down - Soft drop');
     const shape: number[] = this.d_currentTetrimino.getLowestOnesPerColumn();
 
     for (let k = 0; k < shape.length; k++) {
@@ -329,7 +324,6 @@ export class GridComponent implements OnInit {
   }
 
   public rotateRight(): void {
-    console.log('Up - Rotate Right');
     if (!this.isPaused()) {
       if (Gameboard.globalX + this.d_currentTetrimino.getHeight() > (Gameboard.GRID_WIDTH - 1)) {
           const distanceBack = Gameboard.globalX + this.d_currentTetrimino.getHeight() - Gameboard.GRID_WIDTH;
@@ -344,14 +338,12 @@ export class GridComponent implements OnInit {
   }
 
   public rotateLeft(): void {
-    console.log('C - Rotate left');
     if (!this.isPaused()) {
       this.d_currentTetrimino.rotateLeft();
     }
   }
 
   public hardDrop(): void {
-    console.log('X - Hard drop');
     while (!this.tetriminoAtBottom && !this.isPaused()) {
         const shape3: number[] = this.d_currentTetrimino.getLowestOnesPerColumn();
 
@@ -374,7 +366,6 @@ export class GridComponent implements OnInit {
   }
 
   public holdPiece(): void {
-    console.log('Z - Hold piece');
     if (!this.isPaused()) {
       this.updateHoldTetrimino();
     }
@@ -438,7 +429,7 @@ export class GridComponent implements OnInit {
         }
         }, this.d_msDropSpeed);
   }
-
+  @HostListener('document:keypress', ['$event'])
   handleKeyboardEvents(event: KeyboardEvent) {
     switch (event.keyCode) {
               case 37:
@@ -466,7 +457,7 @@ export class GridComponent implements OnInit {
                   this.holdPiece();
                   break;
               default:
-                  console.log('Not supported key press! Key Code: ' + event.keyCode);
+                //   console.log('Not supported key! Key Code: ' + event.keyCode);
                   break;
     }
     this.applyTetrimino(this.d_currentTetrimino, Gameboard.globalY, Gameboard.globalX);

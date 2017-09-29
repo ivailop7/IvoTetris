@@ -5,9 +5,10 @@ import { AppModule } from './app/app.module';
 import { GridComponent } from './app/grid/grid.component';
 import { environment } from './environments/environment';
 
-if (environment.production) {
+// if (environment.production) {
   enableProdMode();
-}
+// }
 
 platformBrowserDynamic().bootstrapModule(AppModule)
-  .catch(err => console.log(err));
+  //.catch(err => console.log(err));
+  .catch(err => {});
