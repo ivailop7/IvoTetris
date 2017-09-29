@@ -21,7 +21,6 @@ h1 {
 #trapezoid {
     width: 150px;
     height: 110px;
-    /* background: #2C2C2C; */
     background: #C04000;
     transform: perspective(20px) rotateX(1.5deg);
     margin: 50px;

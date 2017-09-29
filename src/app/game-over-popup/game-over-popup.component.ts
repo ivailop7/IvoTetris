@@ -8,14 +8,14 @@ import { MdFormFieldModule } from '@angular/material';
   styleUrls: ['./game-over-popup.component.css']
 })
 
-export class GameOverPopupComponent implements OnInit{
-  @Input('Score') score: number; 
+export class GameOverPopupComponent implements OnInit {
+  @Input('Score') score: number;
   @Output('newGameSignal') newGameSignal = new EventEmitter<boolean>();
 
   constructor(public dialog: MdDialog) { }
 
   openDialog(): void {
-    let dialogRef = this.dialog.open(GameOverDialog, {
+    const dialogRef = this.dialog.open(GameOverDialog, {
       width: '400px',
       data: { score: this.score }
     });
@@ -31,7 +31,7 @@ export class GameOverPopupComponent implements OnInit{
 }
 
 @Component({
-  selector: 'gameover-dialog',
+  selector: 'app-gameover-dialog',
   templateUrl: 'gameover-dialog.html',
 })
 export class GameOverDialog {
@@ -45,14 +45,14 @@ export class GameOverDialog {
   }
 
   openFbPopUp() {
-    var sharerURL = `https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Ftetris.ivaylopavlov.com&
+    const sharerURL = `https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Ftetris.ivaylopavlov.com&
     picture=http%3A%2F%2Fwww.ivaylopavlov.com%2Fwp-content%2Fuploads%2F2017%2F09%2Fheader_image.png&
-    title=I+played+IvoTetris&quote=I%20%20played%20IvoTetris%20and%20scored%20`+ this.data.score +`%20Points.&
-    description=I%20%20Played%20IvoTetris%20and%20scored%20`+ this.data.score +`%20Points.`;
+    title=I+played+IvoTetris&quote=I%20%20played%20IvoTetris%20and%20scored%20` + this.data.score + `%20Points.&
+    description=I%20%20Played%20IvoTetris%20and%20scored%20` + this.data.score + `%20Points.`;
     window.open(
       sharerURL,
-      'facebook-share-dialog', 
-      'width=626,height=436'); 
+      'facebook-share-dialog',
+      'width=626,height=436');
     return  false;
   }
 

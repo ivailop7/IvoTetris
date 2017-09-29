@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { Tetrimino } from '../grid/tetrimino.model';
 
 @NgModule({
-  imports: [ BrowserModule,FormsModule ],
+  imports: [ BrowserModule, FormsModule ],
   declarations: [ LeftPanelComponent ],
   bootstrap: [ LeftPanelComponent ]
 })
@@ -17,10 +17,9 @@ import { Tetrimino } from '../grid/tetrimino.model';
 })
 export class LeftPanelComponent implements OnInit {
 
-  @Input('DataFromAppComponent') dataReceived: any;  
+  @Input('DataFromAppComponent') dataReceived: any;
 
   constructor() { }
-
-  ngOnInit() {  }
+  ngOnInit() { }
 
 }

@@ -15,7 +15,7 @@ export class ScoringPopupComponent {
   constructor(public dialog: MdDialog) {}
 
   openDialog(): void {
-    let dialogRef = this.dialog.open(ScoringDialog, {
+    const dialogRef = this.dialog.open(ScoringDialog, {
       width: '400px',
       data: { name: this.name, animal: this.animal }
     });
@@ -28,7 +28,7 @@ export class ScoringPopupComponent {
 }
 
 @Component({
-  selector: 'scoring-dialog',
+  selector: 'app-scoring-dialog',
   templateUrl: 'scoring-dialog.html',
 })
 export class ScoringDialog {

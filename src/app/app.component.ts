@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { GridComponent } from './grid/grid.component';
-import { Gameboard } from "./gameboard.module";
+import { Gameboard } from './gameboard.module';
 import { Tetrimino } from './grid/tetrimino.model';
 import { LeftPanelComponent} from './left-panel/left-panel.component';
 import { RightPanelComponent} from './right-panel/right-panel.component';
@@ -9,7 +9,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { ScoringPopupComponent } from './scoring-popup/scoring-popup.component';
 import { GameOverPopupComponent } from './game-over-popup/game-over-popup.component';
-import { ViewContainerRef, ViewChild, ReflectiveInjector, ComponentFactoryResolver } from '@angular/core';  
+import { ViewContainerRef, ViewChild, ReflectiveInjector, ComponentFactoryResolver } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -17,18 +17,18 @@ import { ViewContainerRef, ViewChild, ReflectiveInjector, ComponentFactoryResolv
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  
+
   title = 'IvoTetris';
   dropSpeed = 1;
   holdTetrimino;
   score = 0;
   linesleft;
   nextTetrimino;
-  sampleDataToLeft : any;
-  sampleDataToRight : any;
-  sampleDataToGrid : any;
+  LeftPanelData: any;
+  RightPanelData: any;
+  GridPanelData: any;
   gameOver: boolean;
-  constructor() {  }
+  constructor() { }
 
   public handleDataFromGrid(object: any) {
     this.dropSpeed = object.dropSpeed;
@@ -38,20 +38,20 @@ export class AppComponent {
     this.linesleft = object.linesleft;
     this.gameOver = object.gameOver;
 
-    this.sampleDataToLeft = {
+    this.LeftPanelData = {
       dropSpeed: this.dropSpeed,
       holdTetrimino : this.holdTetrimino,
       score : this.score,
       linesleft: this.linesleft
     };
 
-    this.sampleDataToRight = {
+    this.RightPanelData = {
       nextTetrimino : this.nextTetrimino
     };
 
-    this.sampleDataToGrid = {
+    this.GridPanelData = {
       newGame: false
     };
-    
+
   }
 }

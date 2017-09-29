@@ -15,7 +15,7 @@ export class ControlsPopupComponent {
   constructor(public dialog: MdDialog) {}
 
   openDialog(): void {
-    let dialogRef = this.dialog.open(ControlsDialog, {
+    const dialogRef = this.dialog.open(ControlsDialog, {
       width: '400px',
       data: { name: this.name, animal: this.animal }
     });
@@ -28,7 +28,7 @@ export class ControlsPopupComponent {
 }
 
 @Component({
-  selector: 'controls-dialog',
+  selector: 'app-controls-dialog',
   templateUrl: 'controls-dialog.html',
 })
 export class ControlsDialog {

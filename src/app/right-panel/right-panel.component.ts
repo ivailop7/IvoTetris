@@ -12,10 +12,7 @@ import { Tetrimino } from '../grid/tetrimino.model';
 export class RightPanelComponent implements OnInit {
   @Input('DataFromAppComponent') dataReceived: any;
 
-  constructor() { 
-    
-  }
-  ngOnInit() {
-  }
+  constructor() { }
+  ngOnInit() { }
 
 }
