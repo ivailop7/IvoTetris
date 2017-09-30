@@ -21,4 +21,12 @@ body {
     background-repeat: repeat-x;
     background-attachment: fixed;
     background-position: bottom; 
+    zoom: 0.9; 
+}
+
+#center {
+    -moz-transform: scale(0.9); 
+    -webkit-box-align:center;
+    -webkit-box-pack:center;
+    display:-webkit-box;
 }

@@ -157,24 +157,57 @@ export class GridComponent implements OnInit {
 
   public applyTetrimino(tetrimino: Tetrimino, heightPos: number, widthPos: number): void {
       this.cleanMatrix();
+      let rightCorrectionCount: number = 0;
+      let allowUp = true;
       const tetriminoLayout: number[][] = tetrimino.getLayout();
 
       for (let i = heightPos; i < (heightPos + tetriminoLayout.length); i++) {
-          for (let j = widthPos; j < (widthPos + tetriminoLayout[i - heightPos].length); j++) {
-              if (tetriminoLayout[i - heightPos][j - widthPos] > 0) {
-                  this.d_matrix[i][j] = tetriminoLayout[i - heightPos][j - widthPos];
-              }
+        for (let j = widthPos; j < (widthPos + tetriminoLayout[i - heightPos].length); j++) {
+          if (tetriminoLayout[i - heightPos][j - widthPos] > 0 && this.d_matrix[i][j] !== 0) {
+              rightCorrectionCount++;
           }
+        }
       }
+      heightPos = heightPos - rightCorrectionCount;
+      for (let i = heightPos; i < (heightPos + tetriminoLayout.length); i++) {
+        for (let j = widthPos; j < (widthPos + tetriminoLayout[i - heightPos].length); j++) {
+          if (tetriminoLayout[i - heightPos][j - widthPos] > 0 && this.d_matrix[i][j] !== 0) {
+              allowUp = false;
+          }
+        }
+      }
+      Gameboard.globalY = heightPos;
+      
+      if(allowUp && widthPos - rightCorrectionCount >= 0) {
+        for (let i = heightPos; i < (heightPos + tetriminoLayout.length); i++) {
+            for (let j = widthPos; j < (widthPos + tetriminoLayout[i - heightPos].length); j++) {
+                if (tetriminoLayout[i - heightPos][j - widthPos] > 0 && this.d_matrix[i][j] === 0) {
+                    this.d_matrix[i][j] = tetriminoLayout[i - heightPos][j - widthPos];
+                }
+            }
+        }
+    }
   }
 
   public appendMatrixNewTetrimino(tetrimino: Tetrimino, heightPos: number, widthPos: number): void {
+      let rightCorrectionCount: number = 0;
       const tetriminoLayout: number[][] = tetrimino.getLayout();
       const copyBehind = this.d_deepCopyMatrix(this.d_behindMatrix);
+      for (let i = heightPos; i < (heightPos + tetriminoLayout.length); i++) {
+        for (let j = widthPos; j < (widthPos + tetriminoLayout[i - heightPos].length); j++) {
+            if (tetriminoLayout[i - heightPos][j - widthPos] > 0 && this.d_behindMatrix[i][j] !== 0) {
+                rightCorrectionCount++;
+            }
+        }
+      }
+      
+      if (widthPos - rightCorrectionCount < 0) { return; }
+      heightPos = heightPos - rightCorrectionCount;
+      Gameboard.globalY = heightPos;
 
       for (let i = heightPos; i < (heightPos + tetriminoLayout.length); i++) {
           for (let j = widthPos; j < (widthPos + tetriminoLayout[i - heightPos].length); j++) {
-              if (tetriminoLayout[i - heightPos][j - widthPos] > 0) {
+              if (tetriminoLayout[i - heightPos][j - widthPos] > 0 && this.d_behindMatrix[i][j] === 0) {
                   copyBehind[i][j] = tetriminoLayout[i - heightPos][j - widthPos];
                   this.d_behindMatrix = this.d_deepCopyMatrix(copyBehind);
               }
@@ -266,6 +299,9 @@ export class GridComponent implements OnInit {
   }
 
   public leftMove(): void {
+    if (this.isPaused()) {
+        return;
+    }
     const shape2: number[] = this.d_currentTetrimino.getLeftestOnesPerRows();
 
     for (let k = 0; k < shape2.length; k++) {
@@ -286,6 +322,9 @@ export class GridComponent implements OnInit {
   }
 
   public rightMove(): void {
+    if (this.isPaused()) {
+        return;
+    }
     const shape1: number[] = this.d_currentTetrimino.getRightestOnesPerRows();
 
     for (let k = 0; k < shape1.length; k++) {
@@ -324,6 +363,21 @@ export class GridComponent implements OnInit {
   }
 
   public rotateRight(): void {
+    // Hits a wall
+    if (Gameboard.globalX + this.d_currentTetrimino.getHeight() > (Gameboard.GRID_WIDTH - 1)) {
+        const distanceBack = Gameboard.globalX + this.d_currentTetrimino.getHeight() - Gameboard.GRID_WIDTH;
+        Gameboard.globalX = Gameboard.globalX - distanceBack;
+    }
+    if (Gameboard.globalY + this.d_currentTetrimino.getWidth() > (Gameboard.GRID_HEIGHT - 1)) {
+        const distanceBack = Gameboard.globalY + this.d_currentTetrimino.getWidth() - Gameboard.GRID_HEIGHT;
+        Gameboard.globalY = Gameboard.globalY - distanceBack;
+    }
+    if (!this.isPaused()) {
+        this.d_currentTetrimino.rotateRight();
+    }
+  }
+
+  public rotateLeft(): void {
     if (!this.isPaused()) {
       if (Gameboard.globalX + this.d_currentTetrimino.getHeight() > (Gameboard.GRID_WIDTH - 1)) {
           const distanceBack = Gameboard.globalX + this.d_currentTetrimino.getHeight() - Gameboard.GRID_WIDTH;
@@ -333,12 +387,6 @@ export class GridComponent implements OnInit {
           const distanceBack = Gameboard.globalY + this.d_currentTetrimino.getWidth() - Gameboard.GRID_HEIGHT;
           Gameboard.globalY = Gameboard.globalY - distanceBack;
       }
-      this.d_currentTetrimino.rotateRight();
-    }
-  }
-
-  public rotateLeft(): void {
-    if (!this.isPaused()) {
       this.d_currentTetrimino.rotateLeft();
     }
   }
@@ -380,8 +428,10 @@ export class GridComponent implements OnInit {
   public updateLinesClearedAndSpeed(lines: number) {
     this.d_linesleft -= lines;
     if (this.d_linesleft <= 0) {
-        this.d_dropSpeed++;
-        this.d_speedChanged = true;
+        if (this.d_dropSpeed < 9) {
+            this.d_dropSpeed++;
+            this.d_speedChanged = true;
+        }
         this.d_msDropSpeed = Gameboard.MS_SPEEDS_PER_LEVEL[this.d_dropSpeed];
         this.d_linesleft += Gameboard.LINES_PER_LEVEL;
     }
