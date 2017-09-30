@@ -11,7 +11,7 @@ h1 {
     height:786px;
     position: fixed;
     margin-left:-450px;
-    margin-top:-400px;
+    margin-top:-410px;
     top:49%; 
     left:50%; 
 }
@@ -20,11 +20,13 @@ h1 {
 }
 #trapezoid {
     width: 150px;
-    height: 110px;
+    height: 100px;
     background: #C04000;
     transform: perspective(20px) rotateX(1.5deg);
     margin: 50px;
     overflow: hidden;
+    vertical-align: center;
+    padding-top: 20px;
 }
 .side-generic-left {
     font-family: "Visitor";
