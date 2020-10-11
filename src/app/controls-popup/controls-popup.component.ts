@@ -1,6 +1,6 @@
 import {Component, Inject} from '@angular/core';
-import {MdDialog, MdDialogRef, MD_DIALOG_DATA} from '@angular/material';
-import {MdFormFieldModule } from '@angular/material';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import {MatFormFieldModule } from '@angular/material';
 
 @Component({
   selector: 'app-controls-popup',
@@ -12,7 +12,7 @@ export class ControlsPopupComponent {
   animal: string;
   name: string;
 
-  constructor(public dialog: MdDialog) {}
+  constructor(public dialog: MatDialog) {}
 
   openDialog(): void {
     const dialogRef = this.dialog.open(ControlsDialog, {
@@ -34,8 +34,8 @@ export class ControlsPopupComponent {
 export class ControlsDialog {
 
   constructor(
-    public dialogRef: MdDialogRef<ControlsDialog>,
-    @Inject(MD_DIALOG_DATA) public data: any) { }
+    public dialogRef: MatDialogRef<ControlsDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   onNoClick(): void {
     this.dialogRef.close();

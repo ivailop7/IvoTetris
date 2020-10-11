@@ -1,6 +1,6 @@
 import { Component, Inject, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { MdDialog, MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
-import { MdFormFieldModule } from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatFormFieldModule } from '@angular/material';
 
 @Component({
   selector: 'app-game-over-popup',
@@ -12,7 +12,7 @@ export class GameOverPopupComponent implements OnInit {
   @Input('Score') score: number;
   @Output('newGameSignal') newGameSignal = new EventEmitter<boolean>();
 
-  constructor(public dialog: MdDialog) { }
+  constructor(public dialog: MatDialog) { }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(GameOverDialog, {
@@ -37,8 +37,8 @@ export class GameOverPopupComponent implements OnInit {
 export class GameOverDialog {
 
   constructor(
-    public dialogRef: MdDialogRef<GameOverDialog>,
-    @Inject(MD_DIALOG_DATA) public data: any) { }
+    public dialogRef: MatDialogRef<GameOverDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   onNoClick(): void {
     this.dialogRef.close();

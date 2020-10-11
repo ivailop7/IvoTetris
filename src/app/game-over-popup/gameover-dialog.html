@@ -1,8 +1,8 @@
-<h1 md-dialog-title style="color:#FB8C00"><b>Congratulations!</b></h1>
-<div md-dialog-content>
+<h1 mat-dialog-title style="color:#FB8C00"><b>Congratulations!</b></h1>
+<div mat-dialog-content>
   <p>Your score is </p><h2>{{ data.score }}</h2>
 </div>
-<div md-dialog-actions>
-  <button md-button [md-dialog-close] tabindex="2">Start a new game!</button>
-  <button md-button (click)="openFbPopUp()" tabindex="-1">Share Score on Facebook</button>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close] tabindex="2">Start a new game!</button>
+  <button mat-button (click)="openFbPopUp()" tabindex="-1">Share Score on Facebook</button>
 </div>

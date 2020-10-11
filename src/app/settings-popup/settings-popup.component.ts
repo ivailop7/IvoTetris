@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
-import { MdDialog, MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
-import { MdFormFieldModule } from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatFormFieldModule } from '@angular/material';
 import { Gameboard } from '../gameboard.module';
 
 @Component({
@@ -12,7 +12,7 @@ export class SettingsPopupComponent {
 
   cb1: boolean;
 
-  constructor(public dialog: MdDialog) {}
+  constructor(public dialog: MatDialog) {}
 
   openDialog(): void {
     const dialogRef = this.dialog.open(SettingsDialog, {
@@ -55,8 +55,8 @@ export class SettingsPopupComponent {
 export class SettingsDialog {
 
   constructor(
-    public dialogRef: MdDialogRef<SettingsDialog>,
-    @Inject(MD_DIALOG_DATA) public data: any) { }
+    public dialogRef: MatDialogRef<SettingsDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   onNoClick(): void {
     this.dialogRef.close();

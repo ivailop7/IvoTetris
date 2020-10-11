@@ -1,13 +1,13 @@
-<h1 md-dialog-title style="color:#FB8C00"><b>Settings</b></h1>
-<div md-dialog-content>
+<h1 mat-dialog-title style="color:#FB8C00"><b>Settings</b></h1>
+<div mat-dialog-content>
   <table>
     <tr>
-      <td><md-checkbox [(ngModel)]="data.cb1" aria-label="Checkbox 1">Single Color Tetriminos</md-checkbox></td>
+      <td><mat-checkbox [(ngModel)]="data.cb1" aria-label="Checkbox 1">Single Color Tetriminos</mat-checkbox></td>
     </tr>
   </table>
   <br>
 </div>
-<div md-dialog-actions>
-    <button md-button [md-dialog-close]="data.cb1" tabindex="2">Save</button>
-    <button md-button (click)="onNoClick()" tabindex="-1">Cancel</button>
+<div mat-dialog-actions>
+    <button mat-button [mat-dialog-close]="data.cb1" tabindex="2">Save</button>
+    <button mat-button (click)="onNoClick()" tabindex="-1">Cancel</button>
 </div>
